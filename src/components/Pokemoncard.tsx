@@ -17,10 +17,19 @@ export interface PokemonCardProps {
   };
   image: string;
   onCardClick?: () => void;
+  showCard?: boolean;
 }
 
 export const PokemonCard = (props: PokemonCardProps) => {
+  if(!props.showCard){
+   return(
+    <button>
+<div className="h-54 object-cover w-full cursor-pointer"    onClick={props.onCardClick}>this is show card</div>
+</button>
+   ) 
+  }
   return (
+  
     <div
       className="max-w-sm border cursor-pointer   bg-gradient-to-br from-yellow-200 to-yellow-400 hover:scale-105 transition-transform duration-300 ease-in-out bg-white shadow-md rounded-lg ring-4 ring-yellow-100 hover:ring-yellow-300 ring-opacity-50 overflow-hidden"
       onClick={props.onCardClick}
@@ -31,6 +40,7 @@ export const PokemonCard = (props: PokemonCardProps) => {
         <p className="text-gray-700 font-semibold text-base mb-2">
           Type: {props.type}
         </p>
+       
         <p className="text-gray-700 font-semibold text-base mb-2">
           HP: {props.hp}
         </p>
